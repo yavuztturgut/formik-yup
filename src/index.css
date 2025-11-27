@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: auto;
+    margin-top: 50px;
+
+}
+
+.form-group Label{
+    margin-top: 20px;
+}
+
+.error{
+    color: red;
+}
