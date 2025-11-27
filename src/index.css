@@ -1,6 +1,4 @@
-.App{
-    background-color: #B0D5E5;
-}
+
 
 body {
   margin: 0;
@@ -30,4 +28,9 @@ code {
     margin-top: 20px;
     margin-left: 380px;
     padding: 15px;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
 }

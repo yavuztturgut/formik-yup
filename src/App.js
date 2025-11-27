@@ -1,12 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React , {useState} from 'react';
 import {useFormik} from "formik";
 import {signupSchema} from "./yup";
 import { Button , Input, Form, Modal} from 'antd';
 import {Row, Col, Container} from 'reactstrap';
 
 function App() {
+    let nextId = 1;
+    const [users, setUsers] = useState([]);
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -17,15 +19,42 @@ function App() {
         },
         validationSchema: signupSchema,
         onSubmit:(values,action) => {
-            console.log(values);
-             action.resetForm()
+            console.log(typeof values);
+            action.resetForm()
+            setUsers(prevUsers => [
+                ...prevUsers,
+                // Listede benzersiz anahtar (key) için id eklenir
+                { ...values, id: nextId++ }
+            ]);
+            closeModal();
         }
     })
+
+    const [isModalOpen, setIsModalOpen] = useState(true);
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
   return (
     <div className="App">
+
+        <Button onClick={openModal}>Register</Button>
+        <ul className="list">
+            {users.map(user => (
+                <li key={user.key}>
+                        <p>{user.email} </p>
+                        <p> {user.age}</p>
+                </li>
+            ))}
+        </ul>
+
         <Modal
             title="Register"
-            open={true}
+            open={isModalOpen}
+            onCancel={closeModal}
             footer={null} >
             <Container>
                 <Form onFinish={formik.handleSubmit}>
