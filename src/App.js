@@ -3,11 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React , {useState} from 'react';
 import {useFormik} from "formik";
 import {signupSchema} from "./yup";
+import DeleteButton from "./deleteButton.js";
 import { Button , Input, Form, Modal} from 'antd';
 import {Row, Col, Container} from 'reactstrap';
 
 function App() {
-    let nextId = 1;
+    const [currentId, setCurrentId] = useState(1);
     const [users, setUsers] = useState([]);
     const formik = useFormik({
         initialValues: {
@@ -19,13 +20,16 @@ function App() {
         },
         validationSchema: signupSchema,
         onSubmit:(values,action) => {
-            console.log(typeof values);
-            action.resetForm()
+            action.resetForm();
+
             setUsers(prevUsers => [
                 ...prevUsers,
-                // Listede benzersiz anahtar (key) için id eklenir
-                { ...values, id: nextId++ }
+                // currentId kullanılarak ID atanır.
+                { ...values, id: currentId }
             ]);
+
+            // ID sayacını artır
+            setCurrentId(prevId => prevId + 1);
             closeModal();
         }
     })
@@ -37,16 +41,22 @@ function App() {
     const openModal = () => {
         setIsModalOpen(true);
     };
-
+    const handleDelete = (userId) => {
+        // userId'si gelen kullanıcı hariç diğerlerini filtrele.
+        setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+    };
   return (
     <div className="App">
-
         <Button onClick={openModal}>Register</Button>
         <ul className="list">
             {users.map(user => (
                 <li key={user.key}>
                         <p>{user.email} </p>
                         <p> {user.age}</p>
+                    <DeleteButton
+                        userId={user.id}
+                        onDelete={handleDelete}
+                    />
                 </li>
             ))}
         </ul>

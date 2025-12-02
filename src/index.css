@@ -45,3 +45,11 @@ code {
     display: flex;
     flex-direction: row;
 }
+
+.list li{
+    padding: 40px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    list-style: none;
+}
