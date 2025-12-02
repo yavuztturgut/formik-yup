@@ -60,7 +60,7 @@ function App() {
                 <Form onFinish={formik.handleSubmit}>
                     <div className="form-group">
                 <Row>
-                    <Col>
+                    <Col sm="6">
                         <label htmlFor="username">Username</label>
                         <Input
                             id="username"
@@ -75,7 +75,7 @@ function App() {
                         ) : <div>
                         </div>}
                     </Col>
-                    <Col>
+                    <Col sm="6">
                         <label htmlFor="email">E-Mail</label>
                         <Input
                             id="email"
@@ -91,7 +91,7 @@ function App() {
                     </Col>
                 </Row>
                         <Row>
-                            <Col>
+                            <Col sm="4">
                                 <label htmlFor="password">Password</label>
                                 <Input
                                     id="password"
@@ -105,7 +105,7 @@ function App() {
                                     <div className="error">{formik.errors.password}</div>
                                 ) : null}
                             </Col>
-                            <Col>
+                            <Col sm="4">
                                 <label htmlFor="confirmPassword">Confirm Password</label>
                                 <Input
                                     id="confirmPassword"
@@ -119,7 +119,7 @@ function App() {
                                     <div className="error">{formik.errors.confirmPassword}</div>
                                 ) : null}
                             </Col>
-                            <Col>
+                            <Col sm="4">
                                 <label htmlFor="age">Age</label>
                                 <Input
                                     id="age"
