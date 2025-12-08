@@ -47,7 +47,7 @@ function App() {
     };
   return (
     <div className="App">
-        <Button onClick={openModal}>aRegister</Button>
+        <Button onClick={openModal}>Register</Button>
         <ul className="list">
             {users.map(user => (
                 <li key={user.key}>
