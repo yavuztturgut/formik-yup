@@ -42,7 +42,7 @@ function App() {
         setIsModalOpen(true);
     };
     const handleDelete = (userId) => {
-        // userId'si gelen kullanıcı hariç diğerlerini filtrele.
+        // userId'si gelen kullanıcı hariç diğerlerini filtrele
         setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
     };
   return (
