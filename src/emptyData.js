@@ -1,6 +1,6 @@
 const emptyData = [
     {
-        id: 1, // Benzersiz ID
+        id: 1,
         username: "yavuz",
         email: "yavuz@example.com",
         password: "123",
