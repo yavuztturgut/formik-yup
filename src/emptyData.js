@@ -8,7 +8,7 @@ const emptyData = [
         age: "21"
     },
     {
-        id: 2, // Benzersiz ID
+        id: 2,
         username: "ibo",
         email: "ibo@example.com",
         password: "123",
