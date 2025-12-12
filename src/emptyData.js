@@ -1,4 +1,5 @@
 const emptyData = [
+    //datalar
     {
         id: 1,
         username: "yavuz",
